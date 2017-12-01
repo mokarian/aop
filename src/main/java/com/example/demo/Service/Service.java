@@ -1,5 +1,7 @@
 package com.example.demo.Service;
 
+import com.example.demo.Service.aop.Latency;
+import com.example.demo.Service.aop.LogReturn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,10 +13,8 @@ public class Service {
 
     private final Logger logger = LoggerFactory.getLogger(Service.class);
 
-
+    @Latency
     public void doSomething() {
-        final long start = System.currentTimeMillis();
-
         //some business logic here
         try {
             Thread.sleep(2000);
@@ -24,14 +24,10 @@ public class Service {
         }
 
 
-        logger.info("REQUEST_LATENCY_doSomething:"
-                + String.valueOf(System.currentTimeMillis() - start));
-
     }
 
+    @Latency
     public void doAnotherThing() {
-        final long start = System.currentTimeMillis();
-
         //some business logic here
         try {
             Thread.sleep(4000);
@@ -40,8 +36,13 @@ public class Service {
         }
 
 
-        logger.info("REQUEST_LATENCY_doAnotherThing:"
-                + String.valueOf(System.currentTimeMillis() - start));
+    }
+
+    @LogReturn
+    public String doAndLog() {
+        //some business logic here
+        //and finally we like to log what is returned value
+       return "returned value is logged";
 
     }
 }
