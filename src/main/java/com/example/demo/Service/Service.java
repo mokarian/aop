@@ -44,4 +44,14 @@ public class Service {
                 + String.valueOf(System.currentTimeMillis() - start));
 
     }
+
+
+    public String doAndLog() {
+        //some business logic here
+        //and finally we like to log what is returned value
+        String value = "returned value is logged";
+        logger.info(value);
+        return value;
+
+    }
 }
