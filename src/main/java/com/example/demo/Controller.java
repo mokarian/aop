@@ -21,6 +21,7 @@ public class Controller {
         ResponseEntity<String> restCallJob =  new ResponseEntity("", HttpStatus.OK);
         service.doSomething();
         service.doAnotherThing();
+        service.doAndLog();
         return restCallJob;
     }
 }
