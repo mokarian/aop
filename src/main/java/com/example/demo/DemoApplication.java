@@ -11,19 +11,6 @@ import org.springframework.web.client.RestTemplate;
 public class DemoApplication {
 
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate(getClientHttpRequestFactory());
-		return restTemplate;
-	}
-
-	private ClientHttpRequestFactory getClientHttpRequestFactory() {
-		int timeout = 5000;
-		HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
-		clientHttpRequestFactory.setConnectTimeout(timeout);
-		return clientHttpRequestFactory;
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
