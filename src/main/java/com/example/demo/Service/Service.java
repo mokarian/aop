@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 @org.springframework.stereotype.Service
 public class Service {
 
-    private final Logger logger = LoggerFactory.getLogger(Service.class);
-
     @Latency
     public void doSomething() {
         //some business logic here
@@ -39,6 +37,7 @@ public class Service {
     }
 
     @LogReturn
+    @Latency
     public String doAndLog() {
         //some business logic here
         //and finally we like to log what is returned value
