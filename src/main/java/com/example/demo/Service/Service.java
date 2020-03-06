@@ -12,7 +12,7 @@ public class Service {
     private final Logger logger = LoggerFactory.getLogger(Service.class);
 
 
-    public void doSomething() {
+    public void a() {
         final long start = System.currentTimeMillis();
 
         //some business logic here
@@ -24,34 +24,38 @@ public class Service {
         }
 
 
-        logger.info("REQUEST_LATENCY_doSomething:"
+        logger.info("REQUEST_LATENCY_A:"
                 + String.valueOf(System.currentTimeMillis() - start));
 
     }
 
-    public void doAnotherThing() {
+    public void b() {
         final long start = System.currentTimeMillis();
 
         //some business logic here
         try {
-            Thread.sleep(4000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
 
-        logger.info("REQUEST_LATENCY_doAnotherThing:"
+        logger.info("REQUEST_LATENCY_B:"
                 + String.valueOf(System.currentTimeMillis() - start));
 
     }
 
 
-    public String doAndLog() {
+    public void c() {
+        final long start = System.currentTimeMillis();
         //some business logic here
-        //and finally we like to log what is returned value
-        String value = "returned value is logged";
-        logger.info(value);
-        return value;
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        logger.info("REQUEST_LATENCY_C:"
+                + String.valueOf(System.currentTimeMillis() - start));
 
     }
 }
