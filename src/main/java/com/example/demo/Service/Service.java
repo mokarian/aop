@@ -1,9 +1,6 @@
 package com.example.demo.Service;
 
 import com.example.demo.Service.aop.Latency;
-import com.example.demo.Service.aop.LogReturn;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by maysam.mokarian on 12/1/2017.
@@ -12,8 +9,8 @@ import org.slf4j.LoggerFactory;
 public class Service {
 
     @Latency
-    public void doSomething() {
-        //some business logic here
+    public void a() {
+
         try {
             Thread.sleep(2000);
 
@@ -21,27 +18,24 @@ public class Service {
             e.printStackTrace();
         }
 
-
     }
 
     @Latency
-    public void doAnotherThing() {
-        //some business logic here
+    public void b() {
         try {
-            Thread.sleep(4000);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    @LogReturn
     @Latency
-    public String doAndLog() {
-        //some business logic here
-        //and finally we like to log what is returned value
-       return "returned value is logged";
+    public void c() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }

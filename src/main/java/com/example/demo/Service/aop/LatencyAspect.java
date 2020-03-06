@@ -21,6 +21,7 @@ public class LatencyAspect {
     @Around("@annotation(Latency)")
     public Object logExecutionTime(final ProceedingJoinPoint joinPoint) throws Throwable {
         final long start = System.currentTimeMillis();
+
         final Object proceed = joinPoint.proceed();
 
         log(System.currentTimeMillis() - start, joinPoint.getSignature().toString());
@@ -32,18 +33,4 @@ public class LatencyAspect {
         this.logger.info(signature + ", EXECUTED_IN(ms), " + executionTime);
     }
 
-    @AfterReturning(value="@annotation(LogReturn)", returning = "returnValue")
-    public void after(final JoinPoint joinPoint, Object returnValue) throws Throwable {
-
-        if(returnValue !=null)
-        {
-            //test type of object get properties (could use reflection)
-            logger.info(String.valueOf(returnValue));
-
-        }
-        else
-        {
-            logger.info(String.valueOf(joinPoint.getSignature()));
-        }
-    }
 }

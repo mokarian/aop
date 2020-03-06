@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by maysam.mokarian on 12/1/2017.
@@ -18,10 +17,10 @@ public class Controller {
     Service service;
     @GetMapping(value = { "/call" }, produces = { "application/json; charset=UTF-8" })
     public ResponseEntity<?> jobsHealth() {
-        ResponseEntity<String> restCallJob =  new ResponseEntity("", HttpStatus.OK);
-        service.doSomething();
-        service.doAnotherThing();
-        service.doAndLog();
+        ResponseEntity<String> restCallJob =  new ResponseEntity("logged", HttpStatus.OK);
+        service.a();
+        service.b();
+        service.c();
         return restCallJob;
     }
 }
