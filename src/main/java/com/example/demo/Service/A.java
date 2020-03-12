@@ -15,14 +15,14 @@ public class A {
     public void call() {
         final long start = System.currentTimeMillis();
 
-        //some business logic here
+        //beginning of the business logic
         try {
             Thread.sleep(2000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        //end of business logic
 
         logger.info("void com.example.demo.Service.A.call(), EXECUTED_IN(ms), "
                 + String.valueOf(System.currentTimeMillis() - start));
